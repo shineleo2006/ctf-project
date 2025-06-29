@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat Room</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="assert/favicon.ico" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.min.js"></script>
+</head>
+<body>
+    <div id="room-name" class="room-header">Chat Room</div>
+  
+  <div class="chat-container">
+    <div id="onlinestatus">
+      <span class="status-indicator status-online"></span>
+      <i class="fa-solid fa-user"></i>
+      <strong style="color: #059669;">Online:</strong> 
+      <span id="user-online">1</span>
+    </div>
+    <ul id="messages">
+      <li class="sent">hi</li>
+      <li class="received">hi</li>
+    </ul>
+    <form id="form">
+      <button type="button" id="emoji-btn" aria-label="Add emoji"> <i class="fa-regular fa-smile"></i></button>
+      <input id="input" autocomplete="off" placeholder="Type your message..." aria-label="Message input" />
+      <button type="submit" class="fa-solid fa-paper-plane" aria-label="Send message"></button>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const picker = new EmojiButton({
+      position: 'top-start',
+      autoHide: false,
+      showVariants: false,
+      showSearch: false,
+      showRecents: false,
+      showPreview: false,
+      style: 'apple'
+    });
+    
+    const input = document.getElementById('input');
+    const emojiBtn = document.getElementById('emoji-btn');
+    
+    picker.on('emoji', emoji => {
+      input.value += emoji;
+      input.focus();
+    });
+    
+    emojiBtn.addEventListener('click', () => {
+      picker.togglePicker(emojiBtn);
+    });
+  </script>
+</body>
+</html>
