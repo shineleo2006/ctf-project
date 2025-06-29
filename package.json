@@ -1,0 +1,17 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Real-time room-based chat application using Node.js and Socket.IO",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "shine leo",
+  "license": "ISC",
+  "dependencies": {
+    "@joeattardi/emoji-button": "^4.6.4",
+    "express": "^4.18.4",
+    "picmo": "^5.8.5",
+    "socket.io": "^4.7.2"
+  }
+}
